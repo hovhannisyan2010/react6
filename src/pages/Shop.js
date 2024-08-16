@@ -1,21 +1,34 @@
-import React, { useEffect, useState } from "react";
-import { Link } from "react-router-dom";
+import { useEffect, useState } from "react";
+import "../App.css";
+import Card from "../Components/Card";
 
 function Shop() {
-  const [data, setData] = useState([]);
+  const [prods, setProds] = useState([])
+  const [search, setSearch] = useState("")
   useEffect(() => {
-    fetch("https://dummyjson.com/products")
+    fetch(`https://dummyjson.com/products/search?q=${search}`)
+      .then(res => res.json())
+      .then(res => setProds(res.products));
+  }, [search])
+  useEffect(() => {
+    setTimeout(()=>{
+      fetch("https://dummyjson.com/products")
       .then((res) => res.json())
-      .then(res=>setData(res.products));
-  },[]);
+      .then(res => setProds(res.products));
+    },600)
+  }, [])
   return (
-    <div>
-      <h1>Shop</h1>
-      {data.map((e)=>{
-       return <div key={e.id}>
-            <Link to={`${e.id}`} >{e.title}</Link>
-        </div>
-      })}
+    <div className="Shop">
+      <input
+        type='text'
+        onChange={(e) => setSearch(e.target.value)}
+        value={search}
+        className='inp' />
+      <div className="parent">
+        {
+          prods.map((e) => <Card key={e.id} image={e.images[0]} title={e.title} id={e.id} />)
+        }
+      </div>
     </div>
   );
 }
