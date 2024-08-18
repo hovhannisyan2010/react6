@@ -2,7 +2,14 @@ import { useEffect, useState } from "react";
 import "../App.css";
 import Card from "../Components/Card";
 
+// localStorage.clear()
 function Shop() {
+  const [carts,setCarts] = useState(JSON.parse(localStorage.getItem('prots'))||[])
+  function addToCart(newProd){
+      setCarts([...carts,newProd])
+      localStorage.setItem('prots',JSON.stringify(carts))
+      // setCarts([])
+  }
   const [prods, setProds] = useState([])
   const [search, setSearch] = useState("")
   useEffect(() => {
@@ -26,7 +33,7 @@ function Shop() {
         className='inp' />
       <div className="parent">
         {
-          prods.map((e) => <Card key={e.id} image={e.images[0]} title={e.title} id={e.id} />)
+          prods.map((e) => <Card key={e.id} prod={e} addBt={addToCart} />)
         }
       </div>
     </div>

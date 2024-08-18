@@ -1,12 +1,15 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
-
-function Card({ title, image, id }) {
+import Button from './Button'
+function Card({prod,addBt}) {
   return (
-    <Link to={`./${id}`} className='card'>
-      <img src={image} />
-      <h2>{title}</h2>
+    <div>
+    <Link to={`./${prod.id}`} className='card'>
+      <img src={prod.images[0]} />
+      <h2>{prod.title}</h2>
     </Link>
+    <Button addBt={addBt} prod={prod} />
+    </div>
   )
 }
 

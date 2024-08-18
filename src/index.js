@@ -7,7 +7,7 @@ import Shop from "./pages/Shop";
 import Contact from "./pages/Contact";
 import Layout from "./Layout";
 import ShopSingle from "./pages/ShopSingle";
-
+import ShopingCard from "./pages/ShopingCard";
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
   <React.StrictMode>
@@ -18,6 +18,7 @@ root.render(
           <Route path="/shop" element={<Shop />} />
           <Route path="/shop/:id" element={<ShopSingle />} />
           <Route path="/contact" element={<Contact />} />
+          <Route path='/cart' element={<ShopingCard/>}/>
         </Route>
       </Routes>
     </BrowserRouter>

@@ -123,6 +123,21 @@ header{
   font-size: 30px;
 }
 
+
+
+.shoping{
+  padding-top: 100px;
+}
+
+table,
+tbody,
+tr,
+td,
+thead,
+th{
+  border: 1px solid black;
+}
+
 @media only screen and (max-width: 600px) {
   .singleParent {
     width: 100%;

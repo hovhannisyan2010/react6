@@ -2,29 +2,27 @@ import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 
 function ShopSingle() {
-    const [prod,setProd]=useState({})
-    const prodId=useParams().id
+  const [prod, setProd] = useState({})
+  const prodId = useParams().id
   useEffect(() => {
     fetch(`https://dummyjson.com/products/${prodId}`)
       .then((res) => res.json())
-      .then(res=>setProd(res))
-  },[]);
+      .then(res => setProd(res))
+  }, []);
   if (prod.message) {
     return <div>
-        {prod.message}
+      {prod.message}
     </div>
   }
-  console.log(prod.images);
   return <div>
-      <div className='singleParent'>
-        <img src={prod.images}/>
-            <div className='information'>
-            <h1>{prod.title}</h1>
-            <h3>{prod.description}</h3>
-            <h3>price: {prod.price}$</h3>
-            <button className="btn">buy</button>
-        </div>
-  </div>;
+    <div className='singleParent'>
+      <img src={prod.images ? prod.images[0] : ""} />
+      <div className='information'>
+        <h1>{prod.title}</h1>
+        <h3>{prod.description}</h3>
+        <h3>price: {prod.price}$</h3>
+      </div>
+    </div>;
   </div>
 }
 
