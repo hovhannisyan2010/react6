@@ -5,11 +5,6 @@ import Card from "../Components/Card";
 // localStorage.clear()
 function Shop() {
   const [carts,setCarts] = useState(JSON.parse(localStorage.getItem('prots'))||[])
-  function addToCart(newProd){
-      setCarts([...carts,newProd])
-      localStorage.setItem('prots',JSON.stringify(carts))
-      // setCarts([])
-  }
   const [prods, setProds] = useState([])
   const [search, setSearch] = useState("")
   useEffect(() => {
@@ -33,7 +28,10 @@ function Shop() {
         className='inp' />
       <div className="parent">
         {
-          prods.map((e) => <Card key={e.id} prod={e} addBt={addToCart} />)
+          prods.map((e) => <Card key={e.id} prod={e} addBt={()=>{
+            setCarts([...carts,e])
+            localStorage.setItem('prots',JSON.stringify([...carts,e]))
+          }} />)
         }
       </div>
     </div>
