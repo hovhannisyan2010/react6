@@ -1,9 +1,9 @@
-import React, { useEffect, useState } from "react";
-function TotalPrice({ total, row }) {
-
+function TotalPrice({total}) {
   return (
     <div>
-      <h1></h1>
+      <h1 >
+        {total()}$
+      </h1>
     </div>
   );
 }

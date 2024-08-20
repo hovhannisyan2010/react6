@@ -27,21 +27,3 @@ function ShopSingle() {
 }
 
 export default ShopSingle;
-
-
-// import React from 'react'
-
-// function SingleCard({image,title,text,price}) {
-//   return (
-    // <div className='singleParent'>
-    //     <img src={image}/>
-        // <div className='information'>
-        //     <h1>{title}</h1>
-        //     <h3>{text}</h3>
-        //     <h3>price:  {price}$</h3>
-        // </div>
-//     </div>
-//   )
-// }
-
-// export default SingleCard
